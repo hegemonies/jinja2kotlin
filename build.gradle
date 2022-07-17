@@ -1,0 +1,50 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "1.7.10"
+    id "io.gitlab.arturbosch.detekt" version "1.21.0"
+}
+
+version = '0.1'
+group = "ru.hegemonies"
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            // Kotlin common libs
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10",
+
+            // Run kotlin script in runtime
+            "org.jetbrains.kotlin:kotlin-reflect:1.7.10",
+            "org.jetbrains.kotlin:kotlin-script-runtime:1.7.10",
+            "org.jetbrains.kotlin:kotlin-compiler-embeddable:1.7.10",
+            "org.jetbrains.kotlin:kotlin-script-util:1.7.10",
+            "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:1.7.10",
+
+            // ArrowKt - functional types
+            "io.arrow-kt:arrow-core:1.1.2",
+    )
+
+    testImplementation(
+            "org.jetbrains.kotlin:kotlin-test",
+//            'io.mockk:mockk:1.12.4',
+//            'org.assertj:assertj-core:3.23.1',
+//            'org.junit.jupiter:junit-jupiter-api:5.8.2',
+//            'org.junit.jupiter:junit-jupiter-engine:5.8.2',
+//            "org.jetbrains.kotlin:kotlin-test-junit:1.7.10",
+    )
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+
+test {
+    useJUnitPlatform()
+}
