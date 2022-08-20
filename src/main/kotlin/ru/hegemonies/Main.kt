@@ -18,4 +18,17 @@ fun main() {
     }.also {
         println("elapsed $it ms")
     }
+
+    measureTimeMillis {
+        println(
+            runScript(
+                """
+                println("hello world!")
+                "hi"
+                """.trimIndent()
+            )
+        )
+    }.also {
+        println("elapsed $it ms")
+    }
 }
