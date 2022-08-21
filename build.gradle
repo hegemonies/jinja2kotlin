@@ -3,6 +3,10 @@ plugins {
     id "io.gitlab.arturbosch.detekt" version "1.21.0"
 }
 
+configurations {
+    ktlint
+}
+
 version = '0.1'
 group = "ru.hegemonies"
 
@@ -27,6 +31,8 @@ dependencies {
             "io.arrow-kt:arrow-core:1.1.2",
     )
 
+    ktlint "com.pinterest:ktlint:0.47.0"
+
     testImplementation(
             "org.jetbrains.kotlin:kotlin-test",
 //            'io.mockk:mockk:1.12.4',
@@ -47,4 +53,19 @@ compileTestKotlin {
 
 test {
     useJUnitPlatform()
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    mainClass.set("com.pinterest.ktlint.Main")
+    args "src/**/*.kt"
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    mainClass.set("com.pinterest.ktlint.Main")
+    args "-F", "src/**/*.kt"
 }

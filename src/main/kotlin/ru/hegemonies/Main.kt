@@ -1,34 +1,7 @@
 package ru.hegemonies
 
-import ru.hegemonies.script.runScript
-import kotlin.system.measureTimeMillis
+import ru.hegemonies.script.scriptEngineWarnUp
 
 fun main() {
-    println("Hello world!")
-
-    measureTimeMillis {
-        println(
-            runScript(
-                """
-                println("hello world!")
-                "hi"
-                """.trimIndent()
-            )
-        )
-    }.also {
-        println("elapsed $it ms")
-    }
-
-    measureTimeMillis {
-        println(
-            runScript(
-                """
-                println("hello world!")
-                "hi"
-                """.trimIndent()
-            )
-        )
-    }.also {
-        println("elapsed $it ms")
-    }
+    scriptEngineWarnUp()
 }

@@ -1,4 +1,4 @@
-package ru.hegemonies.lexer
+package ru.hegemonies.token
 
 data class TokenLocation(
     val column: Int,
