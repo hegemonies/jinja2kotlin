@@ -3,10 +3,10 @@ package ru.hegemonies.token.literal
 import ru.hegemonies.token.TokenLocation
 
 /**
- * EXPLICIT_TUPLE_LITERAL
+ * IMPLICIT_TUPLE_LITERAL
  *     =
  *     literal_type:`tuple`
- *     "(" value:TUPLE_LITERAL_CONTENTS ")"
+ *     value:TUPLE_LITERAL_CONTENTS
  *     ;
  *
  * TUPLE_LITERAL_CONTENTS
@@ -15,11 +15,11 @@ import ru.hegemonies.token.TokenLocation
  *     | ( @+:variable_identifier {SP}* "," {SP}* )
  *     ;
  */
-class ExplicitTupleLiteralToken(
+class ImplicitTupleLiteral(
     location: TokenLocation,
     value: String
 ) : TupleLiteral(
-    grammarName = "EXPLICIT_TUPLE_LITERAL",
+    grammarName = "IMPLICIT_TUPLE_LITERAL",
     location = location,
     value = value
 )
